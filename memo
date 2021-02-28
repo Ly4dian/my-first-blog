@@ -1,0 +1,7 @@
+source myvenv/bin/activate
+
+ python manage.py migrate
+
+ django-admin startproject mysite .
+
+ python manage.py runserver
