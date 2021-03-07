@@ -1,63 +1,13 @@
-<!DOCTYPE html>
-<html lang="ja">
+{% extends 'blog/base.html' %}
 
-<head>
-    <title>ぬるぽのサイト</title>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="utf-8">
-    <!-- <style>
-        div {
-            font-size: 1rem;
-            color: cornflowerblue;
-            width: calc(100%);
-        }
-    </style> -->
-</head>
-
-<body>
-    <header>
-        <img src="https://source.unsplash.com/random/500x500" alt="">
-        <h1>page titile</h1>
-        <nav>
-            <ul>
-                <li><a href="#">home</a></li>
-                <li><a href="#">blog</a></li>
-                <li><a href="#">about</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <article>
-            <header>
-                <h1>Title</h1>
-                <h2>Sub Title</h2>
-                <time datetime="2020-02-02">2020-02-02</time>
-            </header>
-            <div>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis voluptatibus autem eius
-                    perspiciatis iure cumque, vel dolor, earum, officia fugit amet eveniet. Dolorem sint dolorum
-                    corporis
-                    voluptates, nihil corrupti harum?
-                </p>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis voluptatibus autem eius
-                    perspiciatis iure cumque, vel dolor, earum, officia fugit amet eveniet. Dolorem sint dolorum
-                    corporis
-                    voluptates, nihil corrupti harum?
-                </p>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis voluptatibus autem eius
-                    perspiciatis iure cumque, vel dolor, earum, officia fugit amet eveniet. Dolorem sint dolorum
-                    corporis
-                    voluptates, nihil corrupti harum?
-                </p>
-            </div>
-        </article>
-    </main>
-    <footer>
-        <small>@ 2020 example.com</small>
-    </footer>
-</body>
-
-</html>
+{% block content %}
+{% for post in posts %}
+<div class="post">
+    <div class="date">
+        {{ post.published_date }}
+    </div>
+    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+    <p>{{ post.text|linebreaksbr }}</p>
+</div>
+{% endfor %}
+{% endblock %}
